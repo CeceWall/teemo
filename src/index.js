@@ -34,7 +34,7 @@ ReactDOM.render(
         <Router>
             <div>
                 <Route exact path="/" component={Home}/>
-                <Route exact path="/fast-price" component={FastPrice}/>
+                <Route path="/fast-price" component={FastPrice}/>
             </div>
         </Router>
     </Provider>,

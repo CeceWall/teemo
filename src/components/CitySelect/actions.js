@@ -24,10 +24,11 @@ export const getCurrentPosition = createAction("GET_CURRENT_POSITION", async () 
                 latitude: position.coords.latitude,
                 longitude: position.coords.longitude,
             })
-        }, () => {
+        }, (err) => {
             resolve({
                 success: false,
-                message: '定位失败'
+                code: err.code,
+                message: err.message
             })
         })
     });

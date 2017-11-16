@@ -75,7 +75,7 @@ class Home extends React.Component {
                     <Carousel className="carousel">
                         <a style={{height: 190}}>
                             <img src="http://www.epicc.com.cn/wap/views/carProposal2g/images/newbanner.jpg"
-                                 height="190px"
+                                height="190px"
                             />
                         </a>
                     </Carousel>
@@ -91,11 +91,11 @@ class Home extends React.Component {
                             disabled={isNewCar}
                             placeholder="请输入车牌号"
                             {
-                                ...getFieldProps('plateNumber', {
-                                    rules: [
-                                        {required: true, message: '字段必填'}
-                                    ]
-                                })
+                            ...getFieldProps('plateNumber', {
+                                rules: [
+                                    {required: true, message: '字段必填'}
+                                ]
+                            })
                             }
                             error={!!getFieldError('plateNumber')}
                             extra={
@@ -112,12 +112,12 @@ class Home extends React.Component {
                         </InputItem>
                         <InputItem
                             {
-                                ...getFieldProps('phoneNumber', {
-                                    rules: [
-                                        {required: true, message: '字段必填'},
-                                        {validator: this.validatePhoneNumber}
-                                    ]
-                                })
+                            ...getFieldProps('phoneNumber', {
+                                rules: [
+                                    {required: true, message: '字段必填'},
+                                    {validator: this.validatePhoneNumber}
+                                ]
+                            })
                             }
                             error={!!getFieldError('phoneNumber')}
                             placeholder="请输入手机号码"
@@ -153,7 +153,7 @@ class Home extends React.Component {
                 }
                 {ifShowSelectCity &&
                 <CitySelect onClickBack={this.onHideCitySelect}
-                            onChooseCity={this.onChooseCity}
+                    onChooseCity={this.onChooseCity}
                 />
                 }
             </div>

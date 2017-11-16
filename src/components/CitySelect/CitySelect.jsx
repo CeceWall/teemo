@@ -1,5 +1,5 @@
 import React from 'react';
-import {ActivityIndicator, Icon, List, NavBar, SearchBar, WhiteSpace, WingBlank} from 'antd-mobile';
+import {ActivityIndicator, List, NavBar, SearchBar, WhiteSpace, WingBlank} from 'antd-mobile';
 import {connect} from 'react-redux'
 import {withRouter} from "react-router";
 import * as actions from './actions';
@@ -47,24 +47,24 @@ class CitySelect extends React.Component {
         const {ifShowSearchList} = this.state;
         return (
             <div className="city-select-component">
-                <NavBar mode="dark" icon={<Icon type="left"/>} onLeftClick={this.onLeftBack}>
+                <NavBar mode="dark" icon={<i className="fa fa-angle-left fa-2x" aria-hidden="true"/>} onLeftClick={this.onLeftBack}>
                     城市选择
                 </NavBar>
                 <SearchBar placeholder="输入城市名称、首字母、拼音"
-                           onFocus={() => {
-                               this.setState({ifShowSearchList: true})
-                           }}
-                           onCancel={() => {
-                               this.setState({ifShowSearchList: false})
-                           }}
-                           onChange={this.onInputSearch}
+                    onFocus={() => {
+                        this.setState({ifShowSearchList: true})
+                    }}
+                    onCancel={() => {
+                        this.setState({ifShowSearchList: false})
+                    }}
+                    onChange={this.onInputSearch}
                 />
                 {ifShowSearchList &&
                 <List>
                     {cities.map((city) => {
                         return (
                             <Item key={city.city}
-                                  onClick={() => this.handleChooseCity(city)}
+                                onClick={() => this.handleChooseCity(city)}
                             >
                                 {city.city}
                             </Item>
