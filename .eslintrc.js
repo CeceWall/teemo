@@ -21,6 +21,12 @@ module.exports = {
   ],
   "env": {
     "browser": true
+  },
+  rules: {
+    "jsx-a11y/anchor-is-valid": ["error", {
+      "specialLink": ["hrefLeft", "hrefRight"],
+      "aspects": ["noHref", "preferButton"]
+    }]
   }
 };
 

@@ -5,10 +5,10 @@ import FastClick from 'fastclick';
 import { applyMiddleware, createStore } from 'redux';
 import promiseMiddleware from 'redux-promise';
 import { Provider } from 'react-redux';
+import FastPrice from '@/FastPrice';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
 import './index.css';
 import Home from './components/Home';
-import FastPrice from '@/FastPrice';
 import reducers from './reducers';
 import registerServiceWorker from './registerServiceWorker';
 

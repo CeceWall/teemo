@@ -36,7 +36,7 @@ FastPrice.propTypes = {
   history: PropTypes.shape().isRequired,
 };
 
-const mapStateToProps = state => ({});
-const mapDispatchToProps = dispatch => ({});
+const mapStateToProps = () => ({});
+const mapDispatchToProps = () => ({});
 
 export default connect(mapStateToProps, mapDispatchToProps)(FastPrice);
