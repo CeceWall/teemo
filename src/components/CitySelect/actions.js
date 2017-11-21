@@ -1,37 +1,44 @@
 import { createAction } from 'redux-actions';
 import axios from 'axios';
 
-export const searchCity = createAction('SEARCH_CITY', async (keyword) => {
-  const response = await axios.get('/api/cities/find', {
-    params: {
-      keyword,
-    },
-  });
-  return response.data;
-});
+export const searchCities = createAction('SEARCH_CITIES', cities => cities);
+export const getCityName = createAction('GET_CITY_NAME', cityInfo => cityInfo);
 
-export const getCurrentPosition = createAction('GET_CURRENT_POSITION', async () => {
-  if (!navigator.geolocation) {
-    return {
-      success: false,
-      message: '您的浏览器不支持定位',
-    };
-  }
-
-  return new Promise((resolve) => {
-    navigator.geolocation.getCurrentPosition((position) => {
-      resolve({
-        success: true,
-        latitude: position.coords.latitude,
-        longitude: position.coords.longitude,
-      });
-    }, (err) => {
-      resolve({
-        success: false,
-        code: err.code,
-        message: err.message,
-      });
+export function searchCitiesAsync(keyword) {
+  return async (dispatch) => {
+    const response = await axios.get('/api/cities/find', {
+      params: {
+        keyword,
+      },
     });
-  });
-});
+    dispatch(searchCities(response.data));
+  };
+}
+export function getCityNameAsync() {
+  return (dispatch) => {
+    if (!navigator.geolocation) {
+      dispatch(getCityName({
+        success: false,
+        message: '您的浏览器不支持定位，请手动选择',
+      }));
+    }
+    navigator.geolocation.getCurrentPosition(async (position) => {
+      const location = `${position.coords.latitude},${position.coords.longitude}`;
+      const response = await axios.get('/api/cities/getCityName', {
+        params: {
+          location,
+        },
+      });
+      dispatch(getCityName({
+        success: true,
+        result: response.data,
+      }));
+    }, (err) => {
+      dispatch(getCityName({
+        success: false,
+        message: err.message || '位置信息不可用，请手动选择',
+      }));
+    });
+  };
+}
 

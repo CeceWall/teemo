@@ -1,17 +1,15 @@
-import { combineActions, handleActions } from 'redux-actions';
-import { getCurrentPosition, searchCity } from './actions';
+import { handleActions } from 'redux-actions';
+import { getCityName, searchCities } from './actions';
 
 const defaultState = {
   cities: [],
-  positionStatus: {},
+  cityInfo: { loading: true },
 };
 
 export default handleActions({
-  [combineActions(searchCity)](state, { payload: cities }) {
+  [searchCities](state, { payload: cities }) {
     return { ...state, cities };
   },
-
-  [getCurrentPosition]: (state, { payload: positionStatus }) => ({ ...state, positionStatus }),
-
+  [getCityName]: (state, { payload: cityInfo }) => ({ ...state, cityInfo }),
 }, defaultState);
 

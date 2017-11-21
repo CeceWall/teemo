@@ -1,8 +1,10 @@
 import { combineReducers } from 'redux';
-import HomeReducers from './components/Home/reducers';
-import CitySelectReducers from './components/CitySelect/reducers';
+import HomeReducers from '@/Home/reducers';
+import CitySelectReducers from '@/CitySelect/reducers';
+import GoodNewsReducers from '@/GoodNews/reducers';
 
 export default combineReducers({
   HomeReducers,
   citySelect: CitySelectReducers,
+  goodNews: GoodNewsReducers,
 });

@@ -1,0 +1,9 @@
+{
+  "news": [
+    {
+      "id": "123",
+      "title": "好消息",
+      "content":"<div><h1>Good News!</h1><h2>Good News!</h2><h3>Good News!</h3></div>"
+    }
+  ]
+}

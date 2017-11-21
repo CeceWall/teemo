@@ -2,9 +2,19 @@
   .sub-title {
     color: #888;
     font-size: 1.4rem;
-    //padding: 15px 0 9px 15px;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
   }
   .am-grid-text {
     font-size: 1em !important;
+  }
+  .result-city {
+    background-color: lighten(#ddd, 6%);
+    border: 1px #ddd solid;
+    width: 80px;
+    text-align: center;
+    line-height: 40px;
+    height: 40px
   }
 }

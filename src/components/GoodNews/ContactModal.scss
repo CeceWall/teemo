@@ -1,0 +1,21 @@
+
+.good-news-contact-modal {
+  .input-wrapper {
+    position: relative;
+
+    input {
+      box-sizing: border-box;
+      border: 1px #ddd solid;
+      height: 35px;
+      width: 100%;
+      padding: 0 5px;
+    }
+    .error-hint {
+      color: #e73322;
+      position: absolute;
+      right: 8px;
+      top: 50%;
+      transform: translate(0, -50%);
+    }
+  }
+}
