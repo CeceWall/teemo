@@ -7,69 +7,71 @@ import './ContactModal.scss';
 function ContactModal(props) {
   const {
     title, visible, onPressCancel, onPressOk,
-    onInputValueChange, inputPlaceHolder, rules,
+    inputPlaceHolder, rules,
   } = props;
-
 
   const {
     getFieldProps, getFieldError, getFieldValue, validateFields,
   } = props.form;
   return (
-    <Modal
-      visible={visible}
-      title={title}
-      transparent
-      footer={
+    <div>
+      {
+      visible &&
+      <Modal
+        visible={visible}
+        title={title}
+        transparent
+        footer={
         [
           {
             text: '确定',
             onPress: () => {
-              validateFields();
-              const error = getFieldError('input');
-              if (error) {
-                Toast.fail(error[0]);
-                return;
-              }
-              const inputValue = getFieldValue('input');
-              onPressOk(inputValue);
+              validateFields({ first: true, force: true }, (errors) => {
+                if (errors) {
+                  Toast.fail(getFieldError('input')[0]);
+                  return;
+                }
+                const inputValue = getFieldValue('input');
+                onPressOk(inputValue);
+              });
             },
           },
           { text: '取消', onPress: () => onPressCancel() },
         ]
       }
-    >
-      <div className="good-news-contact-modal">
-        <form>
-          <div className="input-wrapper">
-            <input
-              {
+      >
+        <div className="good-news-contact-modal">
+          <form>
+            <div className="input-wrapper">
+              <input
+                {
                 ...getFieldProps('input', {
-                  onChange: onInputValueChange,
-                  validateFirst: true,
                   rules: [
                     { required: true, message: '字段必填' },
                     ...rules,
                   ],
                 })
               }
-              placeholder={inputPlaceHolder}
-            />
-            {!!getFieldError('input') &&
-            <span
-              className="error-hint"
-              role="button"
-              tabIndex="0"
-              onClick={() => Toast.fail(getFieldError('input')[0], 1.5)}
-              onKeyPress={() => {
+                placeholder={inputPlaceHolder}
+              />
+              {!!getFieldError('input') &&
+              <span
+                className="error-hint"
+                role="button"
+                tabIndex="0"
+                onClick={() => Toast.fail(getFieldError('input')[0], 1.5)}
+                onKeyPress={() => {
               }}
-            >
-              <i className="fa fa-exclamation-circle fa-lg" />
-            </span>
+              >
+                <i className="fa fa-exclamation-circle fa-lg" />
+              </span>
             }
-          </div>
-        </form>
-      </div>
-    </Modal>
+            </div>
+          </form>
+        </div>
+      </Modal>
+      }
+    </div>
   );
 }
 
@@ -82,7 +84,6 @@ ContactModal.propTypes = {
   visible: PropTypes.bool.isRequired,
   onPressCancel: PropTypes.func.isRequired,
   onPressOk: PropTypes.func.isRequired,
-  onInputValueChange: PropTypes.func.isRequired,
 };
 
 ContactModal.defaultProps = {

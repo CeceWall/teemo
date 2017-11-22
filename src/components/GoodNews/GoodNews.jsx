@@ -6,7 +6,7 @@ import { MobileNumberValidator } from '@/commons/validators';
 import * as actions from './actions';
 import ContactModal from './ContactModal';
 
-const ContactWays = ['微信预约', '手机预约'];
+const ContactWays = ['微信预约', '手机预约', '取消'];
 
 
 class GoodNews extends React.Component {
@@ -23,13 +23,6 @@ class GoodNews extends React.Component {
     const { id } = match.params;
     getNews(id);
   }
-
-  onContactChange=(evt) => {
-    const { value } = evt.target;
-    this.setState({
-      contact: value,
-    });
-  };
 
   onConfirmContact=() => {
     const { contactIndex } = this.state;
@@ -54,7 +47,7 @@ class GoodNews extends React.Component {
         modalRules = [{ validator: MobileNumberValidator }];
         break;
       default:
-        break;
+        return;
     }
     this.setState({
       contactIndex: index,
@@ -73,6 +66,7 @@ class GoodNews extends React.Component {
   showContactSheet=() => {
     ActionSheet.showActionSheetWithOptions({
       options: ContactWays,
+      destructiveButtonIndex: ContactWays.length - 1,
       message: '请选择预约方式',
       maskClosable: true,
     }, this.onChooseContact);
@@ -92,7 +86,6 @@ class GoodNews extends React.Component {
           inputValue={contact}
           inputPlaceHolder={modalPlaceHolder}
           rules={modalRules}
-          onInputValueChange={this.onContactChange}
           onPressCancel={() => this.setState({
             showModal: false,
           })}
