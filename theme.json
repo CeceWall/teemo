@@ -1,5 +1,7 @@
 {
   "brand-primary": "#e73322",
-  "primary-button-fill-tap": "darken(@brand-primary, 10%)"
+  "primary-button-fill-tap": "darken(@brand-primary, 10%)",
+
+  "primary-color"          : "@brand-primary"
 
 }

@@ -7,8 +7,10 @@ module.exports = {
       "webpack": {
         config: {
           resolve: {
+            extensions: ['.web.js', '.mjs', '.js', '.json', '.web.jsx', '.jsx'],
             alias: {
               '@': path.resolve(__dirname, 'src/components'),
+              'src': path.resolve(__dirname, 'src'),
             }
           }
         }

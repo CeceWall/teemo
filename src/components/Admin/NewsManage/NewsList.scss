@@ -1,0 +1,7 @@
+.news-list-component {
+  .action-buttons {
+    div:not(:last-child) {
+      margin-bottom: 3px;
+    }
+  }
+}

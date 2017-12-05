@@ -1,0 +1,29 @@
+.deletable-wrapper {
+  position: relative;
+  width: 100%;
+  .deletable-content {
+    width: 100%;
+    * {
+      width: 100%;
+    }
+  }
+  .deletable-close {
+    transition: 300ms opacity;
+    opacity: 0;
+    font-weight: 100;
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    right: 0;
+    z-index: 200;
+    width: 32px;
+    height: 32px;
+    text-align: center;
+    line-height: 32px;
+  }
+  &:hover {
+    .deletable-close {
+      opacity: 1;
+    }
+  }
+}

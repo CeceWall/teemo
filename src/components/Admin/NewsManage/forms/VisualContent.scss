@@ -1,0 +1,54 @@
+.visual-content-component {
+  * {
+    box-sizing: border-box;
+  }
+  .actions-list {
+    width: 100%;
+    li {
+      display: inline-block;
+      cursor: pointer;
+    }
+    li:not(:last-child) {
+      margin-right: 10px;
+    }
+  }
+  .action-preview {
+    float: right;
+  }
+  .content {
+    border: 1px solid #ccc;
+    border-top: 0;
+    padding: 6px 8px;
+    font-size: 13px;
+    min-height: 180px;
+    background: #fff;
+  }
+  .actions-bar {
+    transition: opacity 500ms;
+    position: relative;
+    padding: 6px 8px;
+    border: 1px solid #ccc;
+    background-color: white;
+    z-index: 199;
+    input {
+      display: inline-block !important;
+      line-height: 20px !important;
+    }
+    .add-image-form {
+      input {
+        padding-left: 5px;
+      }
+    }
+    .close-bar {
+      width: 20px;
+      height: 20px;
+      cursor: pointer;
+      position: absolute;
+      right: 8px;
+      top: 50%;
+      line-height: 20px;
+      transform: translateY(-50%);
+      text-align: center;
+    }
+  }
+}
